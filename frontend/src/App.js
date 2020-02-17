@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {BrowserRouter as Router} from 'react-router-dom';
 
-function App() {
-  return (
-    <div>
+class App extends Component {
+    render() {
+        return (
+            <Router>
+                <div>
 
-    </div>
-  );
+                </div>
+            </Router>
+        );
+    }
 }
 
-export default App;
+export default connect()(App);
+
