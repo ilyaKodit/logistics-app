@@ -1,11 +1,25 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {BrowserRouter as Router} from 'react-router-dom';
 
-function App() {
-  return (
-    <div>
+import 'antd/dist/antd.css';
+import './style/style.css'
 
-    </div>
-  );
+import Navbar from "./components/Navbar";
+
+class App extends Component {
+
+    render() {
+        return (
+            <Router>
+                <div>
+
+                    <Navbar />
+
+                </div>
+            </Router>
+        );
+    }
 }
 
-export default App;
+export default connect()(App);
