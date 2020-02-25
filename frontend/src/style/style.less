@@ -23,10 +23,53 @@
 /* Login.jsx */
 
 .login_cont{
+  position: relative;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 48px);
+  overflow: hidden;
+}
+
+.login_video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  //filter: grayscale(100%);
+  //-webkit-filter: grayscale(100%);
+  //-moz-filter: grayscale(100%);
+  //-o-filter: grayscale(100%);
+  //-webkit-filter: grayscale(1);
+
+  filter: alpha(Opacity=80); /* Полупрозрачность для IE */
+  opacity: 0.80; /* Полупрозрачность для других браузеров */
+
+  z-index: -100;
+}
+
+.login_top-gradient{
+  position: absolute;
+    top: 0;
+    left: 0;
+  height: 200px;
+  width: 100%;
+  background-image: linear-gradient(
+          to bottom,
+          #ffffff,
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 255, 255, 0.7),
+          rgba(255, 255, 255, 0.5),
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.05),
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01),
+          rgba(255, 255, 255, 0),
+  );
+  z-index: 5;
 }
 
 .login_form{
@@ -39,4 +82,16 @@
 
 .login_form_button{
   width: 100%;
+}
+
+
+/* media */
+
+@media (max-width: 1015px) {
+  .login_video{
+    display: none;
+  }
+  .login_top-gradient{
+    display: none;
+  }
 }

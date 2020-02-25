@@ -7,6 +7,7 @@ import './style/style.css';
 
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+import Registration from "./components/Registration";
 import Home from "./components/Home";
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
                     <Switch>
                         <Route exact path={'/'} component={Home}/>
                         <Route path={'/login'} component={Login}/>
+                        <Route path={'/registration'} component={Registration}/>
                     </Switch>
 
                 </div>
