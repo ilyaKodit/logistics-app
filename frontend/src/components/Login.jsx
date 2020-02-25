@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import {Link} from "react-router-dom";
 
 class Login extends Component {
 
@@ -19,6 +20,13 @@ class Login extends Component {
         return (
 
             <div className={'login_cont'}>
+
+                <div className={'login_top-gradient'}></div>
+
+                <video loop={true} muted={true} autoPlay={true} className="login_video">
+                    <source src="login.mp4" type="video/mp4"/>
+                </video>
+
                 <Form onSubmit={this.handleSubmit} className="login_form">
                     <Form.Item>
                         {getFieldDecorator('login', {
@@ -26,7 +34,7 @@ class Login extends Component {
                         })(
                             <Input
                                 prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                placeholder="Логин"
+                                placeholder="Введите почту Вашей компании"
                             />,
                         )}
                     </Form.Item>
@@ -37,7 +45,7 @@ class Login extends Component {
                             <Input
                                 prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                 type="password"
-                                placeholder="Пароль"
+                                placeholder="Введите пароль"
                             />,
                         )}
                     </Form.Item>
@@ -52,7 +60,7 @@ class Login extends Component {
                         <Button type="primary" htmlType="submit" className="login_form_button">
                             Войти
                         </Button>
-                        Или <a href="">зарегистрируйтесь</a>
+                        Или <Link to={'/registration'}>зарегистрируйтесь</Link>
                     </Form.Item>
                 </Form>
             </div>
