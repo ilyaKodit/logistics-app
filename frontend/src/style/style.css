@@ -5,8 +5,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: auto;
   overflow: hidden;
   z-index: -100;
 }
@@ -14,7 +14,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: auto;
+  height: auto;
   z-index: -100;
 }
 .navbar_cont {
@@ -42,9 +43,5 @@
   margin: auto;
 }
 @media (max-width: 1024px) {
-  .bg_video {
-    width: auto;
-    height: 100%;
-  }
 }
 /*# sourceMappingURL=style.css.map */
