@@ -1,113 +1,75 @@
-/* Navbar.jsx */
-
-.navbar_cont{
+// ------------------- App.js ----------------
+.app_cont{
   display: flex;
-  justify-content: space-between;
-}
-
-.navbar_left{
-  display: flex;
-  justify-content: flex-start;
-}
-
-.navbar_right{
-  display: flex;
-  justify-content: flex-end;
-}
-
-.navbar_link{
-  display: inline !important;
 }
 
 
-/* Login.jsx */
-
-.login_cont{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-  height: calc(100vh - 48px);
-  overflow: hidden;
-}
-
-.login_video{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-
-  //filter: grayscale(100%);
-  //-webkit-filter: grayscale(100%);
-  //-moz-filter: grayscale(100%);
-  //-o-filter: grayscale(100%);
-  //-webkit-filter: grayscale(1);
-
-  //filter: alpha(Opacity=100); /* Полупрозрачность для IE */
-  //opacity: 1.00; /* Полупрозрачность для других браузеров */
-
-  z-index: -100;
-}
-
-.login_top-gradient{
+// --------------- BackgroundApp.jsx ---------
+.bg_cont{
   position: absolute;
     top: 0;
     left: 0;
-  height: 5px;
+  height: 100%;
   width: 100%;
-  background-image: linear-gradient(
-          to bottom,
-          #ffffff,
-          rgba(255, 255, 255, 0.95),
-          rgba(255, 255, 255, 0.9),
-          rgba(255, 255, 255, 0.85),
-          rgba(255, 255, 255, 0.8),
-          rgba(255, 255, 255, 0.75),
-          rgba(255, 255, 255, 0.7),
-          rgba(255, 255, 255, 0.65),
-          rgba(255, 255, 255, 0.6),
-          rgba(255, 255, 255, 0.55),
-          rgba(255, 255, 255, 0.5),
-          rgba(255, 255, 255, 0.45),
-          rgba(255, 255, 255, 0.4),
-          rgba(255, 255, 255, 0.35),
-          rgba(255, 255, 255, 0.3),
-          rgba(255, 255, 255, 0.25),
-          rgba(255, 255, 255, 0.2),
-          rgba(255, 255, 255, 0.15),
-          rgba(255, 255, 255, 0.1),
-          rgba(255, 255, 255, 0.05),
-          rgba(255, 255, 255, 0.02),
-          rgba(255, 255, 255, 0.01),
-          rgba(255, 255, 255, 0),
-  );
-  z-index: 5;
+  overflow: hidden;
+  z-index: -100;
+
+  .bg_video{
+    position: fixed;
+      top: 0;
+      left: 0;
+    width: 100%;
+
+    //filter: grayscale(100%);
+    //-webkit-filter: grayscale(100%);
+    //-moz-filter: grayscale(100%);
+    //-o-filter: grayscale(100%);
+    //-webkit-filter: grayscale(1);
+
+    //filter: alpha(Opacity=100); /* Полупрозрачность для IE */
+    //opacity: 1.00; /* Полупрозрачность для других браузеров */
+
+    z-index: -100;
+  }
 }
 
-.login_form{
-  max-width: 300px;
+// ------------------ Navbar.jsx ----------------
+.navbar_cont{
+  width: 266px;
+  height: 100vh;
+  background-color: #001529;
+
+  .navbar_link{
+    display: inline !important;
+  }
 }
 
-.login_form_forgot{
-  float: right;
+/* Login.jsx */
+.login_cont{
+  margin: auto;
+
+  .login_form{
+    max-width: 350px;
+  }
+
+  .login_form_forgot{
+    float: right;
+  }
+
+  .login_form_button{
+    width: 100%;
+  }
 }
 
-.login_form_button{
-  width: 100%;
+
+// --------------- Registration.jsx -----------
+.reg_cont{
+  margin: auto;
 }
 
-
-/* media */
-
+// -------------------- media -----------------
 @media (max-width: 1024px) {
-  //.login_video{
-  //  display: none;
-  //}
-  //.login_top-gradient{
-  //  display: none;
-  //}
-  .login_video{
+  .bg_video{
     width: auto;
     height: 100%;
   }
