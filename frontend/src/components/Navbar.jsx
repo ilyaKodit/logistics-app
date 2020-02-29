@@ -8,15 +8,35 @@ const {SubMenu} = Menu;
 
 class Navbar extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            mode: "inline"
+        }
+    }
+
+    componentDidMount () {
+
+        if (document.querySelector('body').clientWidth <= 800){
+            // this.MenuRef.current.props.mode = "horizontal"
+            this.setState({
+                mode: "horizontal"
+            });
+            document.querySelector('#menu').removeAttribute('inlineCollapsed')
+        }
+    }
+
     render() {
         return (
             <div className={'navbar_cont'}>
                 <Menu
                     defaultSelectedKeys={['1']}
                     // defaultOpenKeys={['sub1']}
-                    mode="inline"
+                    mode={this.state.mode}
                     theme="dark"
                     inlineCollapsed={false}
+                    id="menu"
                 >
                     <Menu.Item key="1">
                         <Icon type="home" />
