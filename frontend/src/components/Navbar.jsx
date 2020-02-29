@@ -2,63 +2,46 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {Icon, Menu} from "antd";
+import {Icon, Menu, Button} from "antd";
 
 const {SubMenu} = Menu;
 
 class Navbar extends Component {
 
-    state = {
-        current: 'home',
-    };
-
-    handleClick = e => {
-        console.log('click ', e);
-        this.setState({
-            current: e.key,
-        });
-    };
-
     render() {
         return (
             <div className={'navbar_cont'}>
-
-                <div>
-                    <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal"
-                          className={'navbar_left'}>
-                        <Menu.Item key="home">
-                            <Icon type="home"/>
-                            <Link to={'/'} className={'navbar_link'}>Главная</Link>
-                        </Menu.Item>
-                        <SubMenu
-                            title={
-                                <span className="submenu-title-wrapper">
-                                    <Icon type="bars"/>
-                                    Инструменты
-                                </span>
-                            }
-                        >
-                            <Menu.ItemGroup title="Отправка грузов">
-                                <Menu.Item key="findCarrier">Найти грузоперевочика</Menu.Item>
-                                <Menu.Item key="trackShipment">Отследить отправку</Menu.Item>
-                            </Menu.ItemGroup>
-                            <Menu.ItemGroup title="Дополнительно">
-                                <Menu.Item key="volumeCalc">Калькулятор объёма груза</Menu.Item>
-                            </Menu.ItemGroup>
+                <Menu
+                    defaultSelectedKeys={['1']}
+                    // defaultOpenKeys={['sub1']}
+                    mode="inline"
+                    theme="dark"
+                    inlineCollapsed={false}
+                >
+                    <Menu.Item key="1">
+                        <Icon type="home" />
+                        <Link to={'/'} className={'navbar_link'}>Главная</Link>
+                    </Menu.Item>
+                    <SubMenu
+                        key="sub1"
+                        title={
+                            <span>
+                                <Icon type="bars" />
+                                <span>Инструменты</span>
+                            </span>
+                        }
+                    >
+                        <Menu.Item key="2">Найти грузоперевозчика</Menu.Item>
+                        <Menu.Item key="3">Статус отправок</Menu.Item>
+                        <SubMenu key="sub2" title="Дополнительно">
+                            <Menu.Item key="4">Калькулятор объёма груза</Menu.Item>
                         </SubMenu>
-                    </Menu>
-                </div>
-
-                <div>
-                    <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal"
-                          className={'navbar_right'}>
-                        <Menu.Item key="login">
-                            <Icon type="user"/>
-                            <Link to={'/login'} className={'navbar_link'}>Войти</Link>
-                        </Menu.Item>
-                    </Menu>
-                </div>
-
+                    </SubMenu>
+                    <Menu.Item key="5">
+                        <Icon type="user" />
+                        <Link to={'/login'} className={'navbar_link'}>Войти</Link>
+                    </Menu.Item>
+                </Menu>
             </div>
         );
     }

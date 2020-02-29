@@ -21,22 +21,15 @@ class Login extends Component {
 
             <div className={'login_cont'}>
 
-                {/*<div className={'login_top-gradient'}></div>*/}
-
-                <video loop={true} muted={true} autoPlay={true} className="login_video">
-                    <source src="login.mp4" type="video/mp4"/>
-                </video>
-
-
-                <Card title="Авторизация" style={{ width: 300 }}>
+                <Card title="Авторизация" style={{ maxWidth: 350 }}>
                     <Form onSubmit={this.handleSubmit} className="login_form">
                         <Form.Item>
                             {getFieldDecorator('login', {
-                                rules: [{ required: true, message: 'Необходимо указать логин' }],
+                                rules: [{ required: true, message: 'Необходимо указать Вашу почту' }],
                             })(
                                 <Input
                                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="Введите почту Вашей компании"
+                                    placeholder="Введите почту"
                                 />,
                             )}
                         </Form.Item>

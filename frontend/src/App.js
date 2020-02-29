@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import 'antd/dist/antd.css';
 import './style/style.css';
 
+import BackgroundApp from "./components/BackgroundApp";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
@@ -15,8 +16,9 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div>
+                <div className={'app_cont'}>
 
+                    <BackgroundApp />
                     <Navbar />
 
                     <Switch>
