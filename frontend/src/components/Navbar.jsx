@@ -2,30 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {Icon, Menu, Button} from "antd";
+import {Icon, Menu} from "antd";
 
 const {SubMenu} = Menu;
 
 class Navbar extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            mode: "inline"
-        }
-    }
-
-    componentDidMount () {
-
-        if (document.querySelector('body').clientWidth <= 800){
-            // this.MenuRef.current.props.mode = "horizontal"
-            this.setState({
-                mode: "horizontal"
-            });
-            document.querySelector('#menu').removeAttribute('inlineCollapsed')
-        }
-    }
 
     render() {
         return (
@@ -33,10 +14,8 @@ class Navbar extends Component {
                 <Menu
                     defaultSelectedKeys={['1']}
                     // defaultOpenKeys={['sub1']}
-                    mode={this.state.mode}
+                    mode="horizontal"
                     theme="dark"
-                    inlineCollapsed={false}
-                    id="menu"
                 >
                     <Menu.Item key="1">
                         <Icon type="home" />

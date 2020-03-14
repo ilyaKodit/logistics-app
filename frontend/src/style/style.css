@@ -1,5 +1,6 @@
 .app_cont {
   display: flex;
+  flex-direction: column;
 }
 .bg_cont {
   position: absolute;
@@ -19,8 +20,6 @@
   z-index: -100;
 }
 .navbar_cont {
-  width: 266px;
-  height: 100vh;
   background-color: #001529;
 }
 .navbar_cont .navbar_link {
@@ -28,7 +27,7 @@
 }
 /* Login.jsx */
 .login_cont {
-  margin: auto;
+  margin: 20px auto;
 }
 .login_cont .login_form {
   max-width: 350px;
@@ -40,7 +39,7 @@
   width: 100%;
 }
 .reg_cont {
-  margin: auto;
+  margin: 20px auto;
 }
 @media (max-width: 1024px) {
 }
