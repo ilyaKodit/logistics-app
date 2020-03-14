@@ -21,15 +21,15 @@ class Login extends Component {
 
             <div className={'login_cont'}>
 
-                <Card title="Авторизация" style={{ maxWidth: 350 }}>
+                <Card title="Авторизация" style={{ maxWidth: 350 }} className={'login_card'}>
                     <Form onSubmit={this.handleSubmit} className="login_form">
                         <Form.Item>
                             {getFieldDecorator('login', {
-                                rules: [{ required: true, message: 'Необходимо указать Вашу почту' }],
+                                rules: [{ required: true, message: 'Необходимо указать Ваш логин' }],
                             })(
                                 <Input
                                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="Введите почту"
+                                    placeholder="Введите логин"
                                 />,
                             )}
                         </Form.Item>
@@ -59,7 +59,6 @@ class Login extends Component {
                         </Form.Item>
                     </Form>
                 </Card>
-
 
             </div>
 
