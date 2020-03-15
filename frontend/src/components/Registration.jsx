@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from "react-router-dom";
 
 import {
     Form,
@@ -163,8 +164,8 @@ class Registration extends Component {
                             {getFieldDecorator('agreement', {
                                 valuePropName: 'checked',
                             })(
-                                <Checkbox>
-                                    Я прочитал(а) <a href="">соглашение</a>, и принимаю его условия.
+                                <Checkbox className={'reg_checkbox'}>
+                                    Я прочитал(а) <Link to={'/agreement'}>соглашение</Link>, и принимаю его условия.
                                 </Checkbox>,
                             )}
                         </Form.Item>
