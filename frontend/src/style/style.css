@@ -41,6 +41,9 @@
 .reg_cont {
   margin: 20px auto;
 }
+.reg_cont .reg_checkbox {
+  line-height: normal;
+}
 @media (max-width: 1024px) {
 }
 /*# sourceMappingURL=style.css.map */

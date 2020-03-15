@@ -23,6 +23,7 @@ class Login extends Component {
 
                 <Card title="Авторизация" style={{ maxWidth: 350 }} className={'login_card'}>
                     <Form onSubmit={this.handleSubmit} className="login_form">
+
                         <Form.Item>
                             {getFieldDecorator('login', {
                                 rules: [{ required: true, message: 'Необходимо указать Ваш логин' }],
@@ -33,6 +34,7 @@ class Login extends Component {
                                 />,
                             )}
                         </Form.Item>
+
                         <Form.Item>
                             {getFieldDecorator('password', {
                                 rules: [{ required: true, message: 'Необходимо указать пароль' }],
@@ -44,19 +46,19 @@ class Login extends Component {
                                 />,
                             )}
                         </Form.Item>
+
                         <Form.Item>
                             {getFieldDecorator('remember', {
                                 valuePropName: 'checked',
                                 initialValue: true,
                             })(<Checkbox>Запомнить</Checkbox>)}
-                            <a className="login_form_forgot" href="">
-                                Забыл пароль?
-                            </a>
+                            <Link to={'/rememberPass'} className="login_form_forgot">Забыл пароль?</Link>
                             <Button type="primary" htmlType="submit" className="login_form_button">
                                 Войти
                             </Button>
                             Или <Link to={'/registration'}>зарегистрируйтесь</Link>
                         </Form.Item>
+
                     </Form>
                 </Card>
 
