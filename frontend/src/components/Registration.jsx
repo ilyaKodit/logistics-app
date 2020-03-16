@@ -16,9 +16,14 @@ import {
 
 class Registration extends Component {
 
-    state = {
-        confirmDirty: false,
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            confirmDirty: false,
+            acceptedAgreement: true
+        }
+    }
 
     handleSubmit = e => {
         e.preventDefault();
@@ -32,6 +37,11 @@ class Registration extends Component {
     handleConfirmBlur = e => {
         const { value } = e.target;
         this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+    };
+
+    handleCheckbox = e => {
+        const { checked } = e.target;
+        this.setState({ acceptedAgreement: !checked })
     };
 
     compareToFirstPassword = (rule, value, callback) => {
@@ -164,14 +174,14 @@ class Registration extends Component {
                             {getFieldDecorator('agreement', {
                                 valuePropName: 'checked',
                             })(
-                                <Checkbox className={'reg_checkbox'}>
+                                <Checkbox onClick={this.handleCheckbox} className={'reg_checkbox'}>
                                     Я прочитал(а) <Link to={'/agreement'}>соглашение</Link>, и принимаю его условия.
                                 </Checkbox>,
                             )}
                         </Form.Item>
 
                         <Form.Item {...tailFormItemLayout}>
-                            <Button type="primary" htmlType="submit">
+                            <Button type="primary" htmlType="submit" disabled={this.state.acceptedAgreement}>
                                 Зарегистрироваться
                             </Button>
                         </Form.Item>
