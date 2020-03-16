@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 
+import Recaptcha from 'react-google-invisible-recaptcha';
+
 import {
     Form,
     Input,
@@ -21,7 +23,8 @@ class Registration extends Component {
 
         this.state = {
             confirmDirty: false,
-            acceptedAgreement: true
+            acceptedAgreement: true,
+            captchaResult: false
         }
     }
 
@@ -29,7 +32,10 @@ class Registration extends Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                this.captchaController('execute');
+
+            } else {
+                this.captchaController('reset');
             }
         });
     };
@@ -59,6 +65,23 @@ class Registration extends Component {
             form.validateFields(['confirm'], { force: true });
         }
         callback();
+    };
+
+    captchaController = status => {
+        switch (status) {
+            case 'execute':
+                this.recaptcha.execute();
+                break;
+
+            case 'reset':
+                this.recaptcha.reset();
+                break;
+        }
+    };
+
+    onResolved = () => {
+        this.setState({captchaResult: true});
+        console.log('проверка на человека пройдена!');
     };
 
     render() {
@@ -157,28 +180,6 @@ class Registration extends Component {
                             })(<Input.Password onBlur={this.handleConfirmBlur} />)}
                         </Form.Item>
 
-                        <Form.Item label="Капча" extra="Нам необходимо убедиться, что вы человек">
-                            {getFieldDecorator('captcha', {
-                                rules: [{ required: true, message: 'Пожалуйста, подтвердите что вы человек' }]
-                            })(<div
-                                className="g-recaptcha"
-                                data-sitekey="6Le3mOEUAAAAAHZRCCDaImLZBTxxedW8mO02UY9E"
-                            ></div>)}
-                        </Form.Item>
-
-                        {/*<Form.Item label="Капча" extra="Нам необходимо убедиться, что вы человек">*/}
-                        {/*    <Row gutter={8}>*/}
-                        {/*        <Col span={12}>*/}
-                        {/*            {getFieldDecorator('captcha', {*/}
-                        {/*                rules: [{ required: true, message: 'Пожалуйста, введите капчу' }],*/}
-                        {/*            })(<Input />)}*/}
-                        {/*        </Col>*/}
-                        {/*        <Col span={12}>*/}
-                        {/*            <Button>Получить капчу</Button>*/}
-                        {/*        </Col>*/}
-                        {/*    </Row>*/}
-                        {/*</Form.Item>*/}
-
                         <Form.Item {...tailFormItemLayout}>
                             {getFieldDecorator('agreement', {
                                 valuePropName: 'checked',
@@ -194,6 +195,12 @@ class Registration extends Component {
                                 Зарегистрироваться
                             </Button>
                         </Form.Item>
+
+                        <Recaptcha
+                            ref={ ref => this.recaptcha = ref }
+                            sitekey={ "6Le9s-EUAAAAAO_Q40SqY2rTs7HQjUTb-ofW3hTz" }
+                            onResolved={ this.onResolved }
+                        />
                     </Form>
                 </Card>
             </div>
