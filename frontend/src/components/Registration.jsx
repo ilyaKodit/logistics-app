@@ -91,7 +91,7 @@ class Registration extends Component {
         return (
             <div className={'reg_cont'}>
 
-                <Card title="Регистрация" style={{ width: 480 }}>
+                <Card title="Регистрация" style={{ width: 505 }}>
                     <Form {...formItemLayout} onSubmit={this.handleSubmit}>
 
                         <Form.Item label="Логин">
@@ -158,17 +158,26 @@ class Registration extends Component {
                         </Form.Item>
 
                         <Form.Item label="Капча" extra="Нам необходимо убедиться, что вы человек">
-                            <Row gutter={8}>
-                                <Col span={12}>
-                                    {getFieldDecorator('captcha', {
-                                        rules: [{ required: true, message: 'Пожалуйста, введите капчу' }],
-                                    })(<Input />)}
-                                </Col>
-                                <Col span={12}>
-                                    <Button>Получить капчу</Button>
-                                </Col>
-                            </Row>
+                            {getFieldDecorator('captcha', {
+                                rules: [{ required: true, message: 'Пожалуйста, подтвердите что вы человек' }]
+                            })(<div
+                                className="g-recaptcha"
+                                data-sitekey="6Le3mOEUAAAAAHZRCCDaImLZBTxxedW8mO02UY9E"
+                            ></div>)}
                         </Form.Item>
+
+                        {/*<Form.Item label="Капча" extra="Нам необходимо убедиться, что вы человек">*/}
+                        {/*    <Row gutter={8}>*/}
+                        {/*        <Col span={12}>*/}
+                        {/*            {getFieldDecorator('captcha', {*/}
+                        {/*                rules: [{ required: true, message: 'Пожалуйста, введите капчу' }],*/}
+                        {/*            })(<Input />)}*/}
+                        {/*        </Col>*/}
+                        {/*        <Col span={12}>*/}
+                        {/*            <Button>Получить капчу</Button>*/}
+                        {/*        </Col>*/}
+                        {/*    </Row>*/}
+                        {/*</Form.Item>*/}
 
                         <Form.Item {...tailFormItemLayout}>
                             {getFieldDecorator('agreement', {
