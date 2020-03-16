@@ -30,9 +30,14 @@ class Registration extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.form.validateFieldsAndScroll((err, values) => {
+        this.props.form.validateFieldsAndScroll( async (err, values) => {
             if (!err) {
-                this.captchaController('execute');
+                await this.captchaController('execute');
+
+                if (this.state.captchaResult){
+                    console.log('выполнется отправка введенных данных на сервер');
+                    console.log(values);
+                }
 
             } else {
                 this.captchaController('reset');
@@ -67,21 +72,24 @@ class Registration extends Component {
         callback();
     };
 
-    captchaController = status => {
+    captchaController = async status => {
         switch (status) {
             case 'execute':
-                this.recaptcha.execute();
+                await this.recaptcha.execute();
                 break;
 
             case 'reset':
-                this.recaptcha.reset();
+                await this.recaptcha.reset();
                 break;
         }
     };
 
     onResolved = () => {
-        this.setState({captchaResult: true});
-        console.log('проверка на человека пройдена!');
+        let response = this.recaptcha.getResponse();
+        if (response !== 0){
+            this.setState({captchaResult: true});
+            console.log('проверка на человека пройдена!')
+        }
     };
 
     render() {
