@@ -3,10 +3,8 @@
 Стек технологий: 
  --------------
   Frontend:
-  ---------
     - React (Redux)
   Backend:
-  -------
     - Node.js
     - Express
     - MySQL
