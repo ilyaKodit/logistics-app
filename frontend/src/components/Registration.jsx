@@ -9,8 +9,6 @@ import {
     Input,
     Tooltip,
     Icon,
-    Row,
-    Col,
     Checkbox,
     Button,
     Card,
@@ -24,7 +22,9 @@ class Registration extends Component {
         this.state = {
             confirmDirty: false,
             acceptedAgreement: true,
-            captchaResult: false
+            captchaResult: false,
+            error: false,
+            errorMessage: null,
         }
     }
 
@@ -34,9 +34,25 @@ class Registration extends Component {
             if (!err) {
                 await this.captchaController('execute');
 
-                if (this.state.captchaResult){
-                    console.log('выполнется отправка введенных данных на сервер');
-                    console.log(values);
+                if (this.state.captchaResult){ // если проверка на человека пройдена
+
+                    const response = await fetch('http://localhost:5000/registration', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(values)
+                    });
+                    const result = await response.json();
+                    console.log(result);
+                    if (result.error){
+                        this.setState({error: true, errorMessage: result.message});
+                    } else {
+                        this.props.history.push('/');
+                    }
+                    
+                } else { // если проверка на человека не пройдена
+                    this.setState({error: true, errorMessage: 'Проверка на человека не пройдена'});
                 }
 
             } else {
@@ -57,7 +73,7 @@ class Registration extends Component {
 
     compareToFirstPassword = (rule, value, callback) => {
         const { form } = this.props;
-        if (value && value !== form.getFieldValue('password')) {
+        if (value && value !== form.getFieldValue('pass')) {
             callback('Two passwords that you enter is inconsistent!');
         } else {
             callback();
@@ -87,8 +103,7 @@ class Registration extends Component {
     onResolved = () => {
         let response = this.recaptcha.getResponse();
         if (response !== 0){
-            this.setState({captchaResult: true});
-            console.log('проверка на человека пройдена!')
+            this.setState({captchaResult: true}); // проверка на человека пройдена
         }
     };
 
@@ -161,7 +176,7 @@ class Registration extends Component {
                         </Form.Item>
 
                         <Form.Item label="Пароль" hasFeedback>
-                            {getFieldDecorator('password', {
+                            {getFieldDecorator('pass', {
                                 rules: [
                                     {
                                         required: true,

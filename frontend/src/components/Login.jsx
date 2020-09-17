@@ -6,11 +6,34 @@ import {Link} from "react-router-dom";
 
 class Login extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            error: false,
+            errorMessage: null,
+        }
+    }
+
     handleSubmit = e => {
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
+        this.props.form.validateFields( async (err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                const response = await fetch('http://localhost:5000/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(values)
+                });
+                const result = await response.json();
+                console.log(result);
+
+                if (result.error){
+                    this.setState({error: true, errorMessage: result.message});
+                } else {
+                    this.props.history.push('/');
+                }
             }
         });
     };
@@ -36,7 +59,7 @@ class Login extends Component {
                         </Form.Item>
 
                         <Form.Item>
-                            {getFieldDecorator('password', {
+                            {getFieldDecorator('pass', {
                                 rules: [{ required: true, message: 'Необходимо указать пароль' }],
                             })(
                                 <Input
