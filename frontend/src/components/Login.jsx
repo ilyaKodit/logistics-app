@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { YMInitializer } from 'react-yandex-metrika';
+import ym from 'react-yandex-metrika';
 
 import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
 import {Link} from "react-router-dom";
@@ -9,6 +10,9 @@ class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+    ym(67444087,'reachGoal','login-btn');
+
     this.props.form.validateFields((err, values) => {
         if (!err) {
             console.log('Received values of form: ', values);
@@ -61,7 +65,7 @@ class Login extends Component {
                 initialValue: true,
               })(<Checkbox>Запомнить</Checkbox>)}
               <Link to={'/rememberPass'} className="login_form_forgot">Забыл пароль?</Link>
-              <Button type="primary" htmlType="submit" className="login_form_button">
+              <Button type="primary" htmlType="submit" id="login-btn" className="login_form_button">
                 Войти
               </Button>
               Или <Link to={'/registration'}>зарегистрируйтесь</Link>
