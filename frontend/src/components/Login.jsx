@@ -23,7 +23,6 @@ class Login extends Component {
         <YMInitializer
           accounts={[67444087]}
           options={{
-            defer: true,
             clickmap:true,
             trackLinks:true,
             accurateTrackBounce:true,
