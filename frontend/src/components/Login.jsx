@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import ym from 'react-yandex-metrika';
 
 import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
 import {Link} from "react-router-dom";
@@ -55,7 +54,7 @@ class Login extends Component {
                 initialValue: true,
               })(<Checkbox>Запомнить</Checkbox>)}
               <Link to={'/rememberPass'} className="login_form_forgot">Забыл пароль?</Link>
-              <Button type="primary" htmlType="submit" id="login-btn" className="login_form_button" onClick="ym(67444087,'reachGoal','login-btn'); return true;">
+              <Button type="primary" htmlType="submit" id="login-btn" className="login_form_button" onClick="ym(67444087,'reachGoal','login-btn')">
                 Войти
               </Button>
               Или <Link to={'/registration'}>зарегистрируйтесь</Link>
