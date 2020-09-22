@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import { YMInitializer } from 'react-yandex-metrika';
 
 import 'antd/dist/antd.css';
 import './style/style.css';
@@ -19,15 +18,6 @@ class App extends Component {
     return (
       <Router>
         <div className={'app_cont'}>
-          <YMInitializer
-            accounts={[67444087, 67446250]}
-            options={{
-              clickmap:true,
-              trackLinks:true,
-              accurateTrackBounce:true,
-              webvisor:true
-            }}
-          />
 
           <BackgroundApp />
           <Navbar />
