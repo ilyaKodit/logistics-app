@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import ym from 'react-yandex-metrika';
 
 import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
 import {Link} from "react-router-dom";
 
 class Login extends Component {
+
+  componentDidMount() {
+    ym('hit', '/login');
+  }
 
   handleSubmit = e => {
     e.preventDefault();
