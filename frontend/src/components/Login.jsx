@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { withId } from 'react-yandex-metrika';
 
 import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
 import {Link} from "react-router-dom";
@@ -10,7 +9,7 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    withId(67444087)('reachGoal', 'login-btn');
+    ym(67444087,'reachGoal','login-btn')
 
     this.props.form.validateFields((err, values) => {
         if (!err) {
