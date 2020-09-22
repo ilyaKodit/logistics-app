@@ -1,16 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import ym from 'react-yandex-metrika';
 
 import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
 import {Link} from "react-router-dom";
 
 class Login extends Component {
-
-  componentDidMount() {
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-  }
 
   handleSubmit = e => {
     e.preventDefault();
