@@ -10,7 +10,7 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    ym(67444087,'reachGoal','login-btn')
+    // ym(67444087,'reachGoal','login-btn')
 
     this.props.form.validateFields((err, values) => {
         if (!err) {
@@ -55,7 +55,7 @@ class Login extends Component {
                 initialValue: true,
               })(<Checkbox>Запомнить</Checkbox>)}
               <Link to={'/rememberPass'} className="login_form_forgot">Забыл пароль?</Link>
-              <Button type="primary" htmlType="submit" id="login-btn" className="login_form_button">
+              <Button type="primary" htmlType="submit" id="login-btn" className="login_form_button" onClick="ym(67444087,'reachGoal','login-btn')">
                 Войти
               </Button>
               Или <Link to={'/registration'}>зарегистрируйтесь</Link>
