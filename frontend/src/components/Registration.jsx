@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
-import { YMInitializer } from 'react-yandex-metrika';
 
 import Recaptcha from 'react-google-invisible-recaptcha';
 
@@ -117,15 +116,6 @@ class Registration extends Component {
 
     return (
       <div className={'reg_cont'}>
-        <YMInitializer
-          accounts={[67446250]}
-          options={{
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
-          }}
-        />
 
         <Card title="Регистрация" style={{ width: 505 }}>
           <Form {...formItemLayout} onSubmit={this.handleSubmit}>

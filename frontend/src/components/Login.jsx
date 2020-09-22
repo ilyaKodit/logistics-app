@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { YMInitializer, withId } from 'react-yandex-metrika';
+import { withId } from 'react-yandex-metrika';
 
 import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
 import {Link} from "react-router-dom";
@@ -23,15 +23,6 @@ class Login extends Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <div className={'login_cont'}>
-        <YMInitializer
-          accounts={[67444087]}
-          options={{
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
-          }}
-        />
         <Card title="Авторизация" style={{ maxWidth: 350 }} className={'login_card'}>
           <Form onSubmit={this.handleSubmit} className="login_form">
 
